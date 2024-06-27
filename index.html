@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Probation Period Evaluation Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    h1 {
+      border-bottom: 2px solid #2c3e50;
+      padding-bottom: 10px;
+    }
+    h2 {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    p, form {
+      margin: 10px 0;
+    }
+    form {
+      max-width: 600px;
+      margin: auto;
+    }
+    input[type="text"], input[type="date"], textarea, select {
+      margin-bottom: 10px;
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #2c3e50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #34495e;
+    }
+    .signature-container {
+      border: 1px solid #ccc;
+      margin-top: 10px;
+      padding: 10px;
+    }
+    canvas {
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Probation Period Evaluation Form</h1>
+  
+  <form id="evaluationForm">
+    <h2>Employee Information</h2>
+    <p>
+      <strong>Employee Name:</strong><br>
+      <input type="text" id="employeeName" name="employeeName" required>
+    </p>
+    <p>
+      <strong>Employee Badge Number:</strong><br>
+      <input type="text" id="employeeBadgeNumber" name="employeeBadgeNumber" required>
+    </p>
+    <p>
+      <strong>Position:</strong><br>
+      <input type="text" id="position" name="position" required>
+    </p>
+    <p>
+      <strong>Department:</strong><br>
+      <input type="text" id="department" name="department" required>
+    </p>
+    <p>
+      <strong>Manager:</strong><br>
+      <input type="text" id="manager" name="manager" required>
+    </p>
+    <p>
+      <strong>Date of Hire:</strong><br>
+      <input type="date" id="dateOfHire" name="dateOfHire" required>
+    </p>
+    <p>
+      <strong>Probation Period End Date:</strong><br>
+      <input type="date" id="probationEndDate" name="probationEndDate" required>
+    </p>
+    <p>
+      <strong>Evaluator Name:</strong><br>
+      <input type="text" id="evaluatorName" name="evaluatorName" required>
+    </p>
+    <p>
+      <strong>Evaluation Date:</strong><br>
+      <input type="date" id="evaluationDate" name="evaluationDate" required>
+    </p>
+    
+    <h2>Company Knowledge and Skills</h2>
+    <p>
+      <strong>Understanding of RAH Real Estate Visions and Goals:</strong><br>
+      <select id="visionGoals" name="visionGoals" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Understanding of Harrison City Project:</strong><br>
+      <select id="harrisonCity" name="harrisonCity" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Application of Knowledge of Company's Vision, Mission, and Goals:</strong><br>
+      <select id="applicationKnowledge" name="applicationKnowledge" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Proficiency with Company System and Software:</strong><br>
+      <select id="proficiencySoftware" name="proficiencySoftware" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Comments:</strong><br>
+      <textarea id="knowledgeComments" name="knowledgeComments" rows="4"></textarea>
+    </p>
+    
+    <h2>Work Quality</h2>
+    <p>
+      <strong>Accuracy in Documentation and Reporting:</strong><br>
+      <select id="accuracy" name="accuracy" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Quality of Employee's Presentations:</strong><br>
+      <select id="presentationQuality" name="presentationQuality" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Quality of Employee's Work:</strong><br>
+      <select id="workQuality" name="workQuality" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Attention/Understanding of Task Descriptions:</strong><br>
+      <select id="taskUnderstanding" name="taskUnderstanding" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Speed and Accuracy on Task Delivery:</strong><br>
+      <select id="taskDelivery" name="taskDelivery" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Comments:</strong><br>
+      <textarea id="workQualityComments" name="workQualityComments" rows="4"></textarea>
+    </p>
+    
+    <h2>Productivity</h2>
+    <p>
+      <strong>Timeliness in Meeting Deadlines:</strong><br>
+      <select id="timeliness" name="timeliness" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Punctuality:</strong><br>
+      <select id="punctuality" name="punctuality" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Attendance:</strong><br>
+      <select id="attendance" name="attendance" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Ability to be Creative/Innovative:</strong><br>
+      <select id="creativity" name="creativity" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Comments:</strong><br>
+      <textarea id="productivityComments" name="productivityComments" rows="4"></textarea>
+    </p>
+    
+    <h2>Communication and Interpersonal Skills</h2>
+    <p>
+      <strong>Employee Communication Skills:</strong><br>
+      <select id="communicationSkills" name="communicationSkills" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Team Collaboration:</strong><br>
+      <select id="teamCollaboration" name="teamCollaboration" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Networking and Relationship Building:</strong><br>
+      <select id="relationshipBuilding" name="relationshipBuilding" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Comments:</strong><br>
+      <textarea id="communicationComments" name="communicationComments" rows="4"></textarea>
+    </p>
+    
+    <h2>Customer Service</h2>
+    <p>
+      <strong>Negotiation Skills:</strong><br>
+      <select id="negotiationSkills" name="negotiationSkills" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Professionalism and Courtesy with Clients:</strong><br>
+      <select id="professionalism" name="professionalism" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Handling of Client Complaints:</strong><br>
+      <select id="clientComplaints" name="clientComplaints" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Comments:</strong><br>
+      <textarea id="customerServiceComments" name="customerServiceComments" rows="4"></textarea>
+    </p>
+    
+    <h2>Initiative and Adaptability</h2>
+    <p>
+      <strong>Problem-Solving Skills:</strong><br>
+      <select id="problemSolving" name="problemSolving" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Adaptability to Company's Rules & Regulations:</strong><br>
+      <select id="adaptability" name="adaptability" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Proactivity in Identifying Market Opportunities:</strong><br>
+      <select id="proactivity" name="proactivity" required>
+        <option value="">Select</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Satisfactory">Satisfactory</option>
+        <option value="Needs Improvement">Needs Improvement</option>
+      </select>
+    </p>
+    <p>
+      <strong>Comments:</strong><br>
+      <textarea id="initiativeComments" name="initiativeComments" rows="4"></textarea>
+    </p>
+    
+    <h2>Employee Signature</h2>
+    <div class="signature-container">
+      <canvas id="signatureCanvas" width="400" height="150"></canvas>
+    </div>
+    
+    <button type="button" onclick="generatePDF()">Save as PDF</button>
+  </form>
+
+  <!-- Libraries for PDF and Signature -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
+  
+  <script>
+    function generatePDF() {
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF();
+  
+      // Set styles
+      const titleFontSize = 20;
+      const subtitleFontSize = 16;
+      const textFontSize = 12;
+      const lineHeight = 10;
+      const marginLeft = 10;
+      let currentY = 20;
+      const maxY = 290;  // Maximum y-coordinate on the page before adding a new page
+  
+      // Function to add a new page if necessary
+      function checkAddPage(y) {
+        if (y > maxY) {
+          pdf.addPage();
+          currentY = 20;
+        }
+      }
+  
+      // Add title
+      pdf.setFontSize(titleFontSize);
+      pdf.text("Probation Period Evaluation Form", marginLeft, currentY);
+      currentY += lineHeight * 2;
+  
+      // Get form values
+      const formData = {
+        "Employee Name": document.getElementById('employeeName').value,
+        "Employee Badge Number": document.getElementById('employeeBadgeNumber').value,
+        "Position": document.getElementById('position').value,
+        "Department": document.getElementById('department').value,
+        "Manager": document.getElementById('manager').value,
+        "Date of Hire": document.getElementById('dateOfHire').value,
+        "Probation Period End Date": document.getElementById('probationEndDate').value,
+        "Evaluator Name": document.getElementById('evaluatorName').value,
+        "Evaluation Date": document.getElementById('evaluationDate').value,
+        "Understanding of RAH Real Estate Visions and Goals": document.getElementById('visionGoals').value,
+        "Understanding of Harrison City Project": document.getElementById('harrisonCity').value,
+        "Application of Knowledge of Company's Vision, Mission, and Goals": document.getElementById('applicationKnowledge').value,
+        "Proficiency with Company System and Software": document.getElementById('proficiencySoftware').value,
+        "Knowledge Comments": document.getElementById('knowledgeComments').value,
+        "Accuracy in Documentation and Reporting": document.getElementById('accuracy').value,
+        "Quality of Employee's Presentations": document.getElementById('presentationQuality').value,
+        "Quality of Employee's Work": document.getElementById('workQuality').value,
+        "Attention/Understanding of Task Descriptions": document.getElementById('taskUnderstanding').value,
+        "Speed and Accuracy on Task Delivery": document.getElementById('taskDelivery').value,
+        "Work Quality Comments": document.getElementById('workQualityComments').value,
+        "Timeliness in Meeting Deadlines": document.getElementById('timeliness').value,
+        "Punctuality": document.getElementById('punctuality').value,
+        "Attendance": document.getElementById('attendance').value,
+        "Ability to be Creative/Innovative": document.getElementById('creativity').value,
+        "Productivity Comments": document.getElementById('productivityComments').value,
+        "Employee Communication Skills": document.getElementById('communicationSkills').value,
+        "Team Collaboration": document.getElementById('teamCollaboration').value,
+        "Networking and Relationship Building": document.getElementById('relationshipBuilding').value,
+        "Communication Comments": document.getElementById('communicationComments').value,
+        "Negotiation Skills": document.getElementById('negotiationSkills').value,
+        "Professionalism and Courtesy with Clients": document.getElementById('professionalism').value,
+        "Handling of Client Complaints": document.getElementById('clientComplaints').value,
+        "Customer Service Comments": document.getElementById('customerServiceComments').value,
+        "Problem-Solving Skills": document.getElementById('problemSolving').value,
+        "Adaptability to Company's Rules & Regulations": document.getElementById('adaptability').value,
+        "Proactivity in Identifying Market Opportunities": document.getElementById('proactivity').value,
+        "Initiative Comments": document.getElementById('initiativeComments').value
+      };
+  
+      // Add form data to PDF
+      pdf.setFontSize(subtitleFontSize);
+      pdf.text("Employee Information", marginLeft, currentY);
+      currentY += lineHeight;
+  
+      pdf.setFontSize(textFontSize);
+      for (let key in formData) {
+        checkAddPage(currentY + lineHeight);
+        pdf.text(`${key}: ${formData[key]}`, marginLeft, currentY);
+        currentY += lineHeight;
+      }
+  
+      // Add signature
+      checkAddPage(currentY + lineHeight * 4);
+      pdf.setFontSize(subtitleFontSize);
+      pdf.text("Signature", marginLeft, currentY);
+      currentY += lineHeight * 2;
+  
+      const canvas = document.getElementById('signatureCanvas');
+      const imgData = canvas.toDataURL('image/png');
+      pdf.addImage(imgData, 'PNG', marginLeft, currentY, 100, 40);
+      currentY += lineHeight * 5;
+  
+      // Save PDF
+      pdf.save('Probation_Period_Evaluation_Form.pdf');
+    }
+  
+    // Function to clear form fields
+    function clearForm() {
+      document.getElementById('probationEvaluationForm').reset();
+      const signatureCanvas = document.getElementById('signatureCanvas');
+      const ctx = signatureCanvas.getContext('2d');
+      ctx.clearRect(0, 0, signatureCanvas.width, signatureCanvas.height);
+    }
+  
+    // Function to initialize signature pad
+    function initSignaturePad() {
+      const canvas = document.getElementById('signatureCanvas');
+      const signaturePad = new SignaturePad(canvas, {
+        backgroundColor: 'rgb(255, 255, 255)'
+      });
+  
+      // Clear signature on reset
+      document.getElementById('resetSignature').addEventListener('click', function () {
+        signaturePad.clear();
+      });
+    }
+  
+    // Initialize signature pad on page load
+    window.addEventListener('load', function () {
+      initSignaturePad();
+    });
+  
+  </script>
+  
